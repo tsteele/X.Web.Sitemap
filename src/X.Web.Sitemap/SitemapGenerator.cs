@@ -13,7 +13,7 @@ namespace X.Web.Sitemap
             _serializedXmlSaver = new SerializedXmlSaver<List<Url>>(new FileSystemWrapper());
         }
 
-        internal SitemapGenerator(ISerializedXmlSaver<List<Url>> serializedXmlSaver)
+        public SitemapGenerator(ISerializedXmlSaver<List<Url>> serializedXmlSaver)
         {
             _serializedXmlSaver = serializedXmlSaver;
         }

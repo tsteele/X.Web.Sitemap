@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace X.Web.Sitemap
 {
-    internal class SerializedXmlSaver<T> : ISerializedXmlSaver<T>
+    public class SerializedXmlSaver<T> : ISerializedXmlSaver<T>
     {
         private readonly IFileSystemWrapper _fileSystemWrapper;
 

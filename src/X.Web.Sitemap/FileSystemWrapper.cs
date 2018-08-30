@@ -2,7 +2,7 @@
 
 namespace X.Web.Sitemap
 {
-    internal class FileSystemWrapper : IFileSystemWrapper
+    public class FileSystemWrapper : IFileSystemWrapper
     {
         public bool DirectoryExists(string pathToDirectory)
         {

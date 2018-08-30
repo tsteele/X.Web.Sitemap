@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net461</TargetFrameworks>
-    <Version>2.0.5</Version>
+    <Version>2.0.5.1</Version>
     <Description>X.Web.Sitemap is a part of X-Framework library.
 This library allows you quickly and easily generate a Google-compatible sitemap files.</Description>
     <Copyright>Andrew Gubskiy</Copyright>
@@ -15,7 +15,7 @@ This library allows you quickly and easily generate a Google-compatible sitemap 
     <PackageId>xsitemap</PackageId>
     <Authors>Andrew Gubskiy</Authors>
     <Company>.NET Core Ukrainian User Group</Company>
-    <PackageReleaseNotes>Update serialization</PackageReleaseNotes>
+    <PackageReleaseNotes>Make internal interfaces public to allow extension</PackageReleaseNotes>
     <PackageTags>sitemap, web, asp.net, sitemap.xml</PackageTags>
   </PropertyGroup>
 

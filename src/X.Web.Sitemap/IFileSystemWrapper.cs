@@ -2,7 +2,7 @@
 
 namespace X.Web.Sitemap
 {
-    internal interface IFileSystemWrapper
+    public interface IFileSystemWrapper
     {
         bool DirectoryExists(string pathToDirectory);
         FileInfo WriteFile(string xmlString, DirectoryInfo targetDirectory, string targetFileName);
