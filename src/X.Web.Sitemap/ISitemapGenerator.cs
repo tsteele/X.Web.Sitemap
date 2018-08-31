@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace X.Web.Sitemap
 {
@@ -24,7 +25,7 @@ namespace X.Web.Sitemap
         /// The base file name of the sitemap. For example, if you pick 'products' then it will generate
         /// files with names like products-001.xml, products-002.xml, etc.
         /// </param>
-        List<FileInfo> GenerateSitemaps(
+        List<IFileInfo> GenerateSitemaps(
             List<Url> urls, 
             DirectoryInfo targetDirectory, 
             string sitemapBaseFileNameWithoutExtension = "sitemap");

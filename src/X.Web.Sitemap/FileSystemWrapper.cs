@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace X.Web.Sitemap
 {
@@ -9,7 +10,7 @@ namespace X.Web.Sitemap
             return new DirectoryInfo(pathToDirectory).Exists;
         }
 
-        public FileInfo WriteFile(string xmlString, DirectoryInfo targetDirectory, string targetFileName)
+        public IFileInfo WriteFile(string xmlString, DirectoryInfo targetDirectory, string targetFileName)
         {
             if (!targetDirectory.Exists)
             {
@@ -21,9 +22,10 @@ namespace X.Web.Sitemap
             {
                 File.Delete(fullPath);
             }
+            var provider = new PhysicalFileProvider();
 
             File.WriteAllText(fullPath, xmlString);
-            return new FileInfo(fullPath);
+            return new FileInfo(fullPath) as IFileInfo;
         }
     }
 }
