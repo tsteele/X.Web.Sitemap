@@ -12,8 +12,9 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapIndexGeneratorTests
 		private SitemapIndexGenerator _sitemapIndexGenerator;
 		private ISerializedXmlSaver<SitemapIndex> _sitemapIndexSerializer;
 		private TestFileSystemWrapper _fileSystemWrapper;
+        private readonly string _sitemapLocation = Path.GetTempPath();
 
-		[SetUp]
+        [SetUp]
 		public void SetUp()
 		{
 			_fileSystemWrapper = new TestFileSystemWrapper();
@@ -30,7 +31,7 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapIndexGeneratorTests
 				new SitemapInfo(new Uri("https://example.com"), DateTime.UtcNow),
 				new SitemapInfo(new Uri("https://example2.com"), DateTime.UtcNow.AddDays(-1))
 			};
-			var expectedDirectory = new DirectoryInfo(@"C:\temp\sitemaptests\");
+			var expectedDirectory = new DirectoryInfo(_sitemapLocation);
 			var expectedFilename = "testSitemapIndex1.xml";
 
 			//--act

@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
+using Microsoft.Extensions.FileProviders;
 
-namespace X.Web.Sitemap.Tests
-{
-	public class TestFileSystemWrapper : IFileSystemWrapper
+namespace X.Web.Sitemap.Tests {
+    public class TestFileSystemWrapper : IFileSystemWrapper
 	{
 		public bool DirectoryExists(string pathToDirectory)
 		{
 			return true;
 		}
 
-		public FileInfo WriteFile(string xmlString, DirectoryInfo targetDirectory, string targetFileName)
+		public IFileInfo WriteFile(string xmlString, DirectoryInfo targetDirectory, string targetFileName)
 		{
-			var file = new FileInfo(Path.Combine(targetDirectory.FullName, targetFileName));		
+            var provider = new PhysicalFileProvider(targetDirectory.FullName);
+            var file = provider.GetFileInfo(targetFileName);
 			return file;
 		}		
 	}

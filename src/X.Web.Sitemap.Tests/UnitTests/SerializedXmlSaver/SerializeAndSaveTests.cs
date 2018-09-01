@@ -10,8 +10,10 @@ namespace X.Web.Sitemap.Tests.UnitTests.SerializedXmlSaver
 	{
 		private SerializedXmlSaver<SitemapIndex> _serializer;
 		private IFileSystemWrapper _fileSystemWrapper;
+        private readonly string _sitemapLocation = Path.GetTempPath();
 
-		[SetUp]
+
+        [SetUp]
 		public void SetUp()
 		{
 			_fileSystemWrapper = new TestFileSystemWrapper();
@@ -33,7 +35,7 @@ namespace X.Web.Sitemap.Tests.UnitTests.SerializedXmlSaver
 		public void It_Saves_The_XML_File_To_The_Correct_Directory_And_File_Name()
 		{
 			//--arrange
-			var directory = new DirectoryInfo("x");
+			var directory = new DirectoryInfo(_sitemapLocation);
 			var fileName = "sitemapindex.xml";
 
 			var sitemapIndex = new SitemapIndex(new List<SitemapInfo>
@@ -48,26 +50,25 @@ namespace X.Web.Sitemap.Tests.UnitTests.SerializedXmlSaver
 				 directory,
 				 fileName);
 
-			Assert.True(result.FullName.Contains("sitemapindex"));
-			Assert.AreEqual(directory.Name, result.Directory.Name);
+			Assert.True(result.PhysicalPath.Contains("sitemapindex"));
 			Assert.AreEqual(fileName, result.Name);
 		}
 
 		[Test]
 		public void It_Returns_A_File_Info_For_The_File_That_Was_Created()
 		{
-			//--arrange
-			var expectedFileInfo = new FileInfo("c:\\something\\file.xml");
+
+        //--arrange
+        var expectedFileInfo = new FileInfo($"{_sitemapLocation}\\file.xml");
 
 			//--act
 			var result = _serializer.SerializeAndSave(
 				new SitemapIndex(new List<SitemapInfo>()),
-				new DirectoryInfo("c:\\something\\"),
+				new DirectoryInfo(_sitemapLocation),
 				"file.xml");
 
 
-			Assert.AreEqual(expectedFileInfo.FullName, result.FullName);
-			Assert.AreEqual(expectedFileInfo.Directory, result.Directory);
+			Assert.AreEqual(expectedFileInfo.FullName, result.PhysicalPath);
 		}
 
 	}

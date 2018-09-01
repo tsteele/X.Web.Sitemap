@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;net461</TargetFrameworks>
-    <Version>2.0.5.1</Version>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.0.5.2</Version>
     <Description>X.Web.Sitemap is a part of X-Framework library.
 This library allows you quickly and easily generate a Google-compatible sitemap files.</Description>
     <Copyright>Andrew Gubskiy</Copyright>
@@ -17,26 +17,12 @@ This library allows you quickly and easily generate a Google-compatible sitemap 
     <Company>.NET Core Ukrainian User Group</Company>
     <PackageReleaseNotes>Make internal interfaces public to allow extension</PackageReleaseNotes>
     <PackageTags>sitemap, web, asp.net, sitemap.xml</PackageTags>
+    <AssemblyVersion>2.0.5.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>   
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.1" />   
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical">
-      <Version>2.1.1</Version>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.fileproviders.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

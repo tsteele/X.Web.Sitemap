@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace X.Web.Sitemap
 {
@@ -18,7 +19,7 @@ namespace X.Web.Sitemap
             _serializedXmlSaver = serializedXmlSaver;
         }
 
-        public List<FileInfo> GenerateSitemaps(List<Url> urls, DirectoryInfo targetDirectory, string sitemapBaseFileNameWithoutExtension = "sitemap")
+        public List<IFileInfo> GenerateSitemaps(List<Url> urls, DirectoryInfo targetDirectory, string sitemapBaseFileNameWithoutExtension = "sitemap")
         {
             var sitemaps = BuildSitemaps(urls);
 
@@ -46,9 +47,9 @@ namespace X.Web.Sitemap
         }
 
 
-        private List<FileInfo> SaveSitemaps(DirectoryInfo targetDirectory, string sitemapBaseFileNameWithoutExtension, List<Sitemap> sitemaps)
+        private List<IFileInfo> SaveSitemaps(DirectoryInfo targetDirectory, string sitemapBaseFileNameWithoutExtension, List<Sitemap> sitemaps)
         {
-            var sitemapFileInfos = new List<FileInfo>();
+            var sitemapFileInfos = new List<IFileInfo>();
             for (var i = 0; i < sitemaps.Count; i++)
             {
                 var fileName = $"{sitemapBaseFileNameWithoutExtension}-00{i + 1}.xml";

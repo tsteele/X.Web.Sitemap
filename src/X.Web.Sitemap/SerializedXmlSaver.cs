@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using Microsoft.Extensions.FileProviders;
 
 namespace X.Web.Sitemap
 {
@@ -13,7 +14,7 @@ namespace X.Web.Sitemap
             _fileSystemWrapper = fileSystemWrapper;
         }
 
-        public FileInfo SerializeAndSave(T objectToSerialize, DirectoryInfo targetDirectory, string targetFileName)
+        public IFileInfo SerializeAndSave(T objectToSerialize, DirectoryInfo targetDirectory, string targetFileName)
         {
             ValidateArgumentNotNull(objectToSerialize);
 

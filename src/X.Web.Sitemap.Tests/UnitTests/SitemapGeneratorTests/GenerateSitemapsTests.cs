@@ -10,8 +10,9 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapGeneratorTests
 	{
 		private SitemapGenerator _sitemapGenerator;
 		private ISerializedXmlSaver<List<Url>> _sitemapSerializer;
+        private readonly string _sitemapLocation = Path.GetTempPath();
 
-		[SetUp]
+        [SetUp]
 		public void SetUp()
 		{
 			_sitemapSerializer = new SerializedXmlSaver<List<Url>>(new TestFileSystemWrapper());
@@ -30,7 +31,7 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapGeneratorTests
 				urls.Add(new Url());
 			}
 
-			var result = _sitemapGenerator.GenerateSitemaps(urls, new DirectoryInfo("x"), "file");
+			var result = _sitemapGenerator.GenerateSitemaps(urls, new DirectoryInfo(_sitemapLocation), "file");
 
 			Assert.AreEqual(filesCount, result.Count);
 		}
@@ -49,13 +50,13 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapGeneratorTests
 			}
 
 			var fileName = "file";
-			var directory = new DirectoryInfo("x");
+			var directory = new DirectoryInfo(_sitemapLocation);
 
 			//--act
 			var result = _sitemapGenerator.GenerateSitemaps(urls, directory, fileName);
 
 			Assert.AreEqual(filesCount, result.Count);
-			Assert.True(result.All(o => o.Directory.Name == directory.Name));
+			Assert.True(result.All(o => o.PhysicalPath.Contains(directory.Name)));
 			Assert.True(result.Any(o => o.Name == "file-001.xml"));
 			Assert.True(result.Any(o => o.Name == "file-002.xml"));
 		}

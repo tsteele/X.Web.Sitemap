@@ -22,10 +22,13 @@ namespace X.Web.Sitemap
             {
                 File.Delete(fullPath);
             }
-            var provider = new PhysicalFileProvider();
+            var provider = new PhysicalFileProvider(targetDirectory.FullName);
+            var fileInfo = provider.GetFileInfo(targetFileName);
+            if (fileInfo.Exists) File.Delete(fileInfo.PhysicalPath);
 
             File.WriteAllText(fullPath, xmlString);
-            return new FileInfo(fullPath) as IFileInfo;
+
+            return provider.GetFileInfo(targetFileName);
         }
     }
 }

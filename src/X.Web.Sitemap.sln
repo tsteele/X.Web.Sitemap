@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X.Web.Sitemap", "X.Web.Sitemap\X.Web.Sitemap.csproj", "{2BE92EF4-EF70-48F5-A980-E5EB453619C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Web.Sitemap", "X.Web.Sitemap\X.Web.Sitemap.csproj", "{2BE92EF4-EF70-48F5-A980-E5EB453619C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X.Web.Sitemap.Examples", "X.Web.Sitemap.Examples\X.Web.Sitemap.Examples.csproj", "{36268337-7C29-47A8-80D4-239D58A6CDFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Web.Sitemap.Examples", "X.Web.Sitemap.Examples\X.Web.Sitemap.Examples.csproj", "{36268337-7C29-47A8-80D4-239D58A6CDFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "X.Web.Sitemap.Tests", "X.Web.Sitemap.Tests\X.Web.Sitemap.Tests.csproj", "{6973B476-79AE-4F08-BA01-1C89E4343527}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "X.Web.Sitemap.Tests", "X.Web.Sitemap.Tests\X.Web.Sitemap.Tests.csproj", "{6973B476-79AE-4F08-BA01-1C89E4343527}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C7DB010-F179-47DB-B6C5-23B6ACFA2379}
 	EndGlobalSection
 EndGlobal
