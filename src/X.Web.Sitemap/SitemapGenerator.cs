@@ -6,15 +6,15 @@ namespace X.Web.Sitemap
 {
     public class SitemapGenerator : ISitemapGenerator
     {
-        private readonly ISerializedXmlSaver<List<Url>> _serializedXmlSaver;
+        private readonly ISerializedXmlSaver<Sitemap> _serializedXmlSaver;
         public const int MaxNumberOfUrlsPerSitemap = 50000;
 
         public SitemapGenerator()
         {
-            _serializedXmlSaver = new SerializedXmlSaver<List<Url>>(new FileSystemWrapper());
+            _serializedXmlSaver = new SerializedXmlSaver<Sitemap>(new FileSystemWrapper());
         }
 
-        public SitemapGenerator(ISerializedXmlSaver<List<Url>> serializedXmlSaver)
+        public SitemapGenerator(ISerializedXmlSaver<Sitemap> serializedXmlSaver)
         {
             _serializedXmlSaver = serializedXmlSaver;
         }
