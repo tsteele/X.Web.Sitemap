@@ -16,6 +16,7 @@ namespace X.Web.Sitemap
     [XmlRoot(ElementName = "urlset", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     public class Sitemap : List<Url>, ISitemap
     {
+
         private const int LineCount = 1000;
 
         public virtual string ToXml()
