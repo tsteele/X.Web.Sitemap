@@ -9,13 +9,13 @@ namespace X.Web.Sitemap.Tests.UnitTests.SitemapGeneratorTests
 	public class GenerateSitemapsTests
 	{
 		private SitemapGenerator _sitemapGenerator;
-		private ISerializedXmlSaver<List<Url>> _sitemapSerializer;
+		private ISerializedXmlSaver<Sitemap> _sitemapSerializer;
         private readonly string _sitemapLocation = Path.GetTempPath();
 
         [SetUp]
 		public void SetUp()
 		{
-			_sitemapSerializer = new SerializedXmlSaver<List<Url>>(new TestFileSystemWrapper());
+			_sitemapSerializer = new SerializedXmlSaver<Sitemap>(new TestFileSystemWrapper());
 			_sitemapGenerator = new SitemapGenerator(_sitemapSerializer);
 		}
 
