@@ -48,9 +48,8 @@ steps:
   displayName: Pack
   inputs:
     command: 'pack'
-    projects: '$(projects)'
+    packagesToPack: 'src/X.Web.Sitemap/*.csproj'
     arguments: '-p:SymbolPackageFormat=snupkg --configuration $(BuildConfiguration)'
-    versioningScheme: 'off'
     includeSymbols: true
     includeSource: true
 
