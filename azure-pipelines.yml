@@ -1,0 +1,66 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  solution: '**/*.sln'
+  projects: 'src/X.Web.Sitemap/*.csproj'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y mono-complete
+  displayName: 'Install Mono'
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: 'sdk'
+    version: '9.0.x'
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: 'restore'
+    projects: '$(projects)'
+    feedsToUse: 'select'
+    vstsFeed: '/9267dac1-d67d-4669-97b5-483d2c029ede'
+
+- task: DotNetCoreCLI@2
+  displayName: Unit Test
+  inputs:
+    command: test
+    projects: 'tests/X.Web.Sitemap.tests/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: 'build'
+    projects: '$(projects)'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: 'pack'
+    packagesToPack: 'src/X.Web.Sitemap/*.csproj'
+    arguments: '-p:SymbolPackageFormat=snupkg --configuration $(BuildConfiguration)'
+    includeSymbols: true
+    includeSource: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: '9267dac1-d67d-4669-97b5-483d2c029ede'
