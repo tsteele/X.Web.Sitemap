@@ -1,14 +1,15 @@
-# X.Web.Sitemap 
-[![Build status](https://ci.appveyor.com/api/projects/status/m7hb7ukxevvarmvd/branch/master?svg=true)](https://ci.appveyor.com/project/ernado-x/X.Web.Sitemap/branch/master)
-[![NuGet version](https://badge.fury.io/nu/xsitemap.svg)](https://badge.fury.io/nu/xsitemap)
-[![Part of awesome .NET Core](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/thangchung/awesome-dotnet-core#tools)
+# X.Web.Sitemap
 
-Simple sitemap generator for .NET
-You can download it from Nuget.org at http://nuget.org/packages/xsitemap/
+[![NuGet Version](http://img.shields.io/nuget/v/X.Web.Sitemap.svg?style=flat)](https://www.nuget.org/packages/X.Web.Sitemap/)
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/andrew_gubskiy.svg?style=social&label=Follow%20me!)](https://twitter.com/intent/user?screen_name=andrew_gubskiy)
+
+
+X.Web.Sitemap is a library for generating and managing sitemaps in .NET applications.
 
 ## Usage example
 
-Below is an example of basic usage in a non-testable manner
+### Sitemap usage example 
+Below is an example of basic usage:
 
 ```cs
     class Program
@@ -19,9 +20,9 @@ Below is an example of basic usage in a non-testable manner
 
             sitemap.Add(new Url
                 {
-                    ChangeFrequency = ChangeFrequency.Daily,
-                    Location = "http://www.example.com",
-                    Priority = 0.5,
+                    ChangeFrequency = ChangeFrequency.Hourly,
+                    Location = "https://www.example.com",
+                    Priority = 0.8,
                     TimeStamp = DateTime.Now
                 });
 
@@ -57,7 +58,8 @@ Below is an example of basic usage in a non-testable manner
     }
 ```
 
-Below is a more comprehensive example that demonstrates how to create many sitemaps and how to add them to a sitemap index file in a unit-testable fashion.
+### SitemapGenerator usage example
+Below is a more comprehensive example that demonstrates how to create multiple sitemaps and how to add them to a sitemap index file.
 
 ```cs
 	public class SitemapGenerationWithSitemapIndexExample
@@ -126,6 +128,7 @@ Below is a more comprehensive example that demonstrates how to create many sitem
 
             var sitemapInfos = new List<SitemapInfo>();
             var dateSitemapWasUpdated = DateTime.UtcNow.Date;
+            
             foreach (var fileInfo in fileInfoForGeneratedSitemaps)
             {
                 //--it's up to you to figure out what the URI is to the sitemap you wrote to the file sytsem. In this case we are assuming that the directory above
@@ -154,3 +157,11 @@ Below is a more comprehensive example that demonstrates how to create many sitem
         }
     }
 ```
+
+---
+
+## Contributing
+Contributions to the `X.Web.Sitemap` library are welcome. Please ensure to follow the contributing guidelines specified in the repository for submitting issues, feature requests, or pull requests.
+
+## License
+The `X.Web.Sitemap` library is released under [MIT license](https://raw.githubusercontent.com/a-gubskiy/X.Web.Sitemap/master/LICENSE.md).
