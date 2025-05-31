@@ -16,6 +16,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y mono-complete
+  displayName: 'Install Mono'
+
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
   inputs:
