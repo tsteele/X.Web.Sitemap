@@ -10,7 +10,7 @@
 
         <Nullable>enable</Nullable>     
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        <PackageId>xsitemap</PackageId>
+        <PackageId>X.Web.Sitemap.NNet</PackageId>
     </PropertyGroup>
 
     <ItemGroup>
