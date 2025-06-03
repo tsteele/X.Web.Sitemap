@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: X.Web.Sitemap.NNet
+  description: NNet modified version of X.Web.Sitemap
+  annotations:
+    dev.azure.com/project: NNet
+    dev.azure.com/build-definition: tsteele.X.Web.Sitemap
+spec:
+  type: package
+  owner: tony.steele@neighbournet.com
+  lifecycle: unknown
