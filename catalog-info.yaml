@@ -6,7 +6,12 @@ metadata:
   annotations:
     dev.azure.com/project: NNet
     dev.azure.com/build-definition: tsteele.X.Web.Sitemap
+  links:
+    - title: Derived from X.Web.Sitemap
+      url: https://github.com/a-gubskiy/X.Web.Sitemap
+  tags:
+    - net8
 spec:
   type: package
-  owner: tony.steele@neighbournet.com
-  lifecycle: unknown
+  owner: nnet
+  lifecycle: test

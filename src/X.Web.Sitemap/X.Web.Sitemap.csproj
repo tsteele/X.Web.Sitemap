@@ -4,7 +4,7 @@
         <Title>X.Web.Sitemap</Title>
         <Description>This library allows you quickly and easily generate sitemap files.</Description>
         <LangVersion>default</LangVersion>
-        <TargetFrameworks>net9.0</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
 
         <PackageTags>sitemap, web asp.net sitemap.xml</PackageTags>
 
