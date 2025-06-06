@@ -15,3 +15,4 @@ spec:
   type: package
   owner: nnet
   lifecycle: test
+  system: site-map
